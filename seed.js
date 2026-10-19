@@ -1,0 +1,17 @@
+const SQL = `
+    CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    fname VARCHAR(255) NOT NULL,
+    lname VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    is_member BOOLEAN DEFAULT FALSE,
+    is_admin BOOLEAN DEFAULT FALSE);
+
+    CREATE TABLE IF NOT EXISTS messages (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    message TEXT NOT NULL,
+    author_id INTEGER NOT NULL REFERENCES users(id));
+`;
