@@ -9,27 +9,28 @@
 
     <div class="page">
         <h1>Sign Up</h1>
-        <form action="" method="POST">
+        <form action="/sign-up" method="POST">
             <label for="firstName">First Name: </label>
-            <input type="text" id="firstName" name="fname">
+            <input type="text" id="firstName" name="firstName" required>
 
             <label for="lastName">Last Name: </label>
-            <input type="text" id="lastName" name="lname">
+            <input type="text" id="lastName" name="lastName" required>
 
             <label for="uname">Username: </label>
-            <input type="text" id="uname" name="username">
+            <input type="text" id="username" name="username" required>
             
             <label for="pword">Password: </label>
-            <input type="password" id="pword" name="password">
+            <input type="password" id="password" name="password" required>
             
             <label for="cpword">Confirm Password: </label>
-            <input type="password" id="cpword" name="cpassword">
-        </form>
+            <input type="password" id="cpassword" name="cpassword" required>
+        
+            <div class="formButtons">
+                <button type="submit">Submit</button>
+                <a href="/home" class="smlBtn">Cancel</a>
+            </div>
 
-        <div class="formButtons">
-            <button type="submit">Submit</button>
-            <a href="/home" class="smlBtn">Cancel</a>
-        </div>
+        </form>
 
     </div>
 
