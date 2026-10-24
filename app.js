@@ -1,9 +1,16 @@
 const express = require("express");
 const app = express();
 const path = require("node:path");
+const authRouter = require("./routes/authRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
+app.use("/auth", authRouter);
 
 // const pool = require("./db/pool");
 
