@@ -12,6 +12,14 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRouter);
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, (error) => {
+  if (error) {
+    throw error;
+  }
+  console.log(`Express app listening on port ${PORT}!`);
+});
+
 // const pool = require("./db/pool");
 
 // async function testConnection(){
