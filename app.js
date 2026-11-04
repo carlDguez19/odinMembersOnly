@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("node:path");
+const pool = require("./db/pool");
 
 app.use(express.urlencoded({ extended: true }));
 const authRouter = require("./routes/authRouter");
@@ -9,6 +10,21 @@ const session = require("express-session");
 const passport = require("passport");
 require("./config/passport");
 const pgSession = require("connect-pg-simple")(session);
+
+const sessionStore = new pgSession({
+  pool: pool,
+  createTableIfMissing: true,
+});
+
+app.use(session({
+  store: sessionStore,
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -26,18 +42,3 @@ app.listen(PORT, (error) => {
   }
   console.log(`Express app listening on port ${PORT}!`);
 });
-
-// const pool = require("./db/pool");
-
-// async function testConnection(){
-//     try{
-//         const result = await pool.query("SELECT NOW()");
-//         console.log(result.rows[0]);
-//     }catch(error){
-//         console.error("Database connection failed: ", error.messsage);
-//     }finally{
-//         await pool.end();
-//     }
-// }
-
-// testConnection();

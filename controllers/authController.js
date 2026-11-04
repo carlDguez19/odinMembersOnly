@@ -20,10 +20,9 @@ async function signUpPOST(req,res) {
 
     try{
         
-        const result = await pool.query(
+        await pool.query(
             `INSERT INTO users (fname, lname, username, password)
-            VALUES ($1, $2, $3, $4)
-            RETURNING id`,
+            VALUES ($1, $2, $3, $4)`,
             [firstName, lastName, username, hashedPassword]
         );
 
