@@ -50,7 +50,7 @@ async function logInPOST(req, res, next){
     })(req, res, next);
 }
 
-async function logOutPOST(req, res, next) {
+function logOutPOST(req, res, next) {
     req.logout(function(err){
         if (err){
             return next(err);
@@ -64,4 +64,5 @@ module.exports = {
     signUpPOST,
     logInGET,
     logInPOST,
+    logOutPOST,
 }
