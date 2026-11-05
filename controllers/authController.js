@@ -42,8 +42,11 @@ function logInGET(req,res){
     res.render("logIn.ejs", {title: "Log In"});
 }
 
-async function logInPOST(req, res){
-    
+async function logInPOST(req, res, next){
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/login"
+    })(req, res, next);
 }
 
 module.exports = {
