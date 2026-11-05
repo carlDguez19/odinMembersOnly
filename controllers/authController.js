@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const pool = require("../db/pool");
+const passport = require("passport");
 
 function signUpGET(req,res){
     res.render("signUp.ejs", {title: "Sign Up"});
@@ -45,8 +46,17 @@ function logInGET(req,res){
 async function logInPOST(req, res, next){
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/login"
+        failureRedirect: "/auth/login"
     })(req, res, next);
+}
+
+async function logOutPOST(req, res, next) {
+    req.logout(function(err){
+        if (err){
+            return next(err);
+        }
+        res.redirect('/');
+    });
 }
 
 module.exports = {
