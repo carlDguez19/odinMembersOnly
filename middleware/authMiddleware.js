@@ -1,10 +1,8 @@
-const passport = require("passport");
-
 function isAuthenticated(req, res, next){
     if(req.isAuthenticated()){
-        next();
+        return next();
     }
-    res.redirect("/auth/login");
+    return res.redirect("/auth/login");
 }
 
 module.exports = {
