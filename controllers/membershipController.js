@@ -5,15 +5,15 @@ function membershipGET(req, res){
 async function membershipPOST(req, res){
     let message = "";
     if(req.body.riddle.toLowerCase() === "ring"){
-        message = "You are now a member.";
 
         //await logic to turn is_member true
 
-        return res.redirect("/membership", {message: message});
+        req.session.message = "You are now a memeber";
+        return res.redirect("/membership");
     }else{
-        message = "Try again";
 
-        return res.redirect("/membership", {message:message});
+        req.session.message = "Try again";
+        return res.redirect("/membership");
     }
 }
 
