@@ -3,8 +3,8 @@ function membershipGET(req, res){
 }
 
 async function membershipPOST(req, res){
-    const message = "";
-    if(req.body.riddle.toLowerCase === "ring"){
+    let message = "";
+    if(req.body.riddle.toLowerCase() === "ring"){
         message = "You are now a member.";
 
         //await logic to turn is_member true
@@ -19,4 +19,5 @@ async function membershipPOST(req, res){
 
 module.exports = {
     membershipGET,
+    membershipPOST,
 }
