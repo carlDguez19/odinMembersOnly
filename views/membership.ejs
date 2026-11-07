@@ -7,7 +7,12 @@
 </head>
 <body>
     <form action="/membership" method="POST">
-        <h1>What have i got in my pocket?</h1>
+
+        <% if(message) {%>
+            <p><%= message %></p>
+        <% } %>
+
+        <h2>What have i got in my pocket?</h2>
         <input type="text" name="riddle" id="riddle">
         <button type="submit">Submit</button>
     </form>
