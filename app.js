@@ -5,6 +5,7 @@ const pool = require("./db/pool");
 
 app.use(express.urlencoded({ extended: true }));
 const authRouter = require("./routes/authRouter");
+const membRouter = require("./routes/membershipRouter");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -34,6 +35,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
+app.use("/", membRouter);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
