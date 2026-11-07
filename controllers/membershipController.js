@@ -1,5 +1,8 @@
 function membershipGET(req, res){
-    res.render("membership.ejs", {title: "Membership signup"});
+
+    const message = req.session.message;
+    delete req.session.message;
+    res.render("membership.ejs", {title: "Membership signup", message: message});
 }
 
 async function membershipPOST(req, res){
