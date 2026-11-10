@@ -1,7 +1,7 @@
-const pool = require("./db/pool.js");
+const pool = require("../db/pool.js");
 
 async function getAllMessages(){
-    const {rows} = await pool.query(`SELECT *.messages, users.fname, users.lname
+    const {rows} = await pool.query(`SELECT messages.*, users.fname, users.lname
         FROM messages JOIN users ON users.id = messages.author_id `);
     
     return rows;

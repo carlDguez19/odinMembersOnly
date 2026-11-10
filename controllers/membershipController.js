@@ -8,8 +8,7 @@ function membershipGET(req, res){
 }
 
 async function membershipPOST(req, res, next){
-    let message = "";
-    if(req.body.riddle.toLowerCase() === "ring"){
+    if(req.body && typeof req.body.riddle === "string" && req.body.riddle.trim().toLowerCase() === "ring"){
 
         try{
             await pool.query(
@@ -17,7 +16,7 @@ async function membershipPOST(req, res, next){
                 [req.user.id]
             );
 
-            req.session.message = "You are now a memeber";
+            req.session.message = "You are now a member";
             return res.redirect("/membership");
         }catch (error){
             next(error);
