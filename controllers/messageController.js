@@ -14,7 +14,7 @@ async function createMessage(req, res, next){
     }
     
     try{
-        const newMsg = await messageModel.createMessage(title, message, req.user.id);
+        await messageModel.createMessage(title, message, req.user.id);
         return res.redirect("/");
     }catch(error){
         next(error);

@@ -6,6 +6,7 @@ const pool = require("./db/pool");
 app.use(express.urlencoded({ extended: true }));
 const authRouter = require("./routes/authRouter");
 const membRouter = require("./routes/membershipRouter");
+const msgRouter = require("./routes/messageRouter");
 const mesesageController = require("./controllers/messageController");
 
 const session = require("express-session");
@@ -31,11 +32,9 @@ app.use(passport.session());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.get("/", mesesageController.getMessagesGET);
-
 app.use("/auth", authRouter);
 app.use("/", membRouter);
-
+app.use("/", msgRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
