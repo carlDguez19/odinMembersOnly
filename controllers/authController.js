@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const pool = require("../db/pool");
 const passport = require("passport");
+const usersModel = require("../models/users");
 
 function signUpGET(req,res){
     res.render("signUp.ejs", {title: "Sign Up"});
@@ -21,7 +22,7 @@ async function signUpPOST(req,res) {
 
     try{
         
-        await pool.query(
+        await pool.query( //add await usersModel.createUser(firstName, lastName, username, hashedPassword)
             `INSERT INTO users (fname, lname, username, password)
             VALUES ($1, $2, $3, $4)`,
             [firstName, lastName, username, hashedPassword]
