@@ -2,6 +2,10 @@ const messageModel = require("../models/messages");
 
 
 async function getMessagesGET(req, res){
-    const messages = messageModel.getAllMessages()
-    res.render("/", {title: "Home", messages: messages});
+    const messages = await messageModel.getAllMessages()
+    res.render("home.ejs", {title: "Home", messages: messages, user: req.user});
+}
+
+module.exports = {
+    getMessagesGET,
 }

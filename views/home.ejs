@@ -14,6 +14,16 @@
             <button type="submit">Logout</button>
         </form>
         <a href="/membership">Become Member</a>
+
+        <form action="/" method="POST">
+            <label for="msgTitle">Title:</label>
+            <input type="text" id="msgTitle" name="msgTitle">
+
+            <label for="msg">Message:</label>
+            <textarea name="msg" id="msg"></textarea>
+
+            <button type="submit">POST</button>
+        </form>
     <% } %>
 
 </body>

@@ -6,6 +6,7 @@ const pool = require("./db/pool");
 app.use(express.urlencoded({ extended: true }));
 const authRouter = require("./routes/authRouter");
 const membRouter = require("./routes/membershipRouter");
+const mesesageController = require("./controllers/messageController");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -30,9 +31,7 @@ app.use(passport.session());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("home", {user: req.user});
-});
+app.get("/", mesesageController.getMessagesGET);
 
 app.use("/auth", authRouter);
 app.use("/", membRouter);
