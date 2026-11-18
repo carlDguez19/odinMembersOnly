@@ -5,3 +5,5 @@ const msgRouter = Router();
 
 msgRouter.post("/", isAuthenticated, msgController.createMessage);
 msgRouter.get("/", msgController.getMessagesGET);
+
+module.exports = msgRouter;

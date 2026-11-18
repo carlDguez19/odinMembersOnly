@@ -7,7 +7,6 @@ app.use(express.urlencoded({ extended: true }));
 const authRouter = require("./routes/authRouter");
 const membRouter = require("./routes/membershipRouter");
 const msgRouter = require("./routes/messageRouter");
-const mesesageController = require("./controllers/messageController");
 
 const session = require("express-session");
 const passport = require("passport");

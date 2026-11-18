@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= title%></title>
 </head>
 <body>
     <h1>Hello members and non members</h1>
     <a href="/auth/login">login</a>
     <a href="/auth/sign-up">signup</a>
+    <% if (messages) {%>
+        <% for(let i = 0; i < messages.length; i++) {%>
+            <p><%= messages[i].message %></p>
+        <% } %>
+    <% } %>
+
      <% if (locals.user) {%>
         <form action="/auth/logout" method="POST">
             <button type="submit">Logout</button>
